@@ -1,0 +1,186 @@
+php artisan migrate
+
+quede en -14.49 disenar bbdd de un blog
+
+php artisan make:model Category -m
+php artisan make:model Post -m
+php artisan make:model Tag -m
+
+creando la tabla post_tag para la relacion muchos a muchos
+php artisan make:migration create_post_tag_table
+
+php artisan make:model Image -m
+
+==========
+php artisan migrate
+
+=========
+para levantar el programa sin xampp
+
+php arisan serve
+
+
+==================
+creando los factory
+==================
+
+php artisan make:factory CategoryFactory
+php artisan make:factory PostFactory
+php artisan make:factory TagFactory
+php artisan make:factory ImageFactory
+
+
+========================
+'default' => env('FILESYSTEM_DRIVER', 'app'),
+lo cambiamos pra que la imagen suba en Storage/app/public
+
+'default' => env('FILESYSTEM_DRIVER', 'public'),
+
+===============================
+generamos el servidor virtual
+
+============================
+
+
+=========================================================
+generando el seeder para usuarios y poner una credencial
+=========================================================
+php artisan make:seeder UserSeeder
+
+php artisan make:seeder PostSeeder
+php artisan make:seeder ZonaSeeder
+
+=========================================================
+ejecutand el seeder
+=========================================================
+    php artisan migrate:fresh --seed
+
+
+=============================================
+creamos el componente 
+php artisan make:livewire navigation
+
+
+=============================================
+creamos el controller
+php artisan make:controller PostController
+
+
+========================
+creando controlador del adm
+php artisan make:controller Admin\HomeController
+
+
+
+
+==================================
+creando el controller para categorias
+==================================
+php artisan make:controller Admin/CategoryController -r
+
+para ver las rutas
+php artisan r:l --name=admin.categories
+
+==================================
+instalando laravel collective
+==================================
+
+$ composer require laravelcollective/html
+
+
+==================================
+plugin para slug
+==================================
+jQuery Plugin stringToSlug
+
+
+
+
+==================================
+creando el controller para post y clientes
+==================================
+php artisan make:controller Admin/PostController -r
+php artisan make:controller Admin/ClienteController -r
+
+
+==================================
+creando el componente 
+==================================
+php artisan make:livewire Admin/PostsIndex
+php artisan make:livewire Admin/ClientesIndex
+
+
+
+php artisan migrate:fresh --seed
+
+==================================
+generando el request para controlar los campos
+==================================
+
+php artisan make:request StorePostRequest
+php artisan make:request StoreClienteRequest
+
+
+
+==================================
+creando el acceso directo
+==================================
+
+php artisan storage:link 
+
+
+==================================
+creando los observer
+==================================
+
+php artisan make:observer PostObserver --model=Post 
+
+
+==================================
+creando las politicas policis
+==================================
+
+php artisan make:policy PostPolicy 
+php artisan make:policy ClientePolicy 
+
+
+==================================
+instalando laravel spatie
+==================================
+
+composer require spatie/laravel-permission
+
+==================================
+publicamos las migraciones
+==================================
+para ver las migraciones en el archivo correspondie
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+creamos las tablas con 
+php artisan migrate
+
+
+creando el seeder
+===================
+
+php artisan make:seeder RoleSeeder
+
+==================
+creando controlador para administrar usuarios
+===================
+
+php artisan make:controller Admin\UserController -r
+
+
+==================
+creando el componente de clase
+===================
+php artisan make:livewire Admin\UsersIndex
+
+
+
+==================
+creando el controllador para roles
+===================
+php artisan make:controller Admin\RoleControlle -r
